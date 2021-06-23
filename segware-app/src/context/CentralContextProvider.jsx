@@ -3,7 +3,18 @@ import React, { useState } from 'react';
 import Context from './Context';
 
 function CentralContextProvider({ children }) {
-  return <Context.Provider>{children}</Context.Provider>;
+  const [isUsernameExist, setIsUsernameExist] = useState(false);
+
+  return (
+    <Context.Provider
+      value={ {
+        isUsernameExist,
+        setIsUsernameExist
+      } }
+    >
+      {children}
+    </Context.Provider>
+  );
 }
 
 CentralContextProvider.propTypes = {
