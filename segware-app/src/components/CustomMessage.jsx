@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render } from '@testing-library/react';
 import { Message } from 'semantic-ui-react';
 
 const CustomMessage = ({ children }) => {
-  render();
   return (
     <Message compact color="red" style={ { backgroundColor: 'rgb(33, 33, 33)' } }>
       { children }
@@ -13,7 +11,7 @@ const CustomMessage = ({ children }) => {
 };
 
 CustomMessage.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.array.isRequired,
 };
 
 export default CustomMessage;

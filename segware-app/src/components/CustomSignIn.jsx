@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Segment } from 'semantic-ui-react';
 
-const CustomLogin = ({
+const CustomSignIn = ({
   formData: { username, password },
   onInputChange,
   onHandleSubmit,
@@ -16,7 +16,7 @@ const CustomLogin = ({
         <Segment stacked style={{ backgroundColor: 'rgb(33, 33, 33)' }} basic>
           <Form.Input
             fluid
-            icon="at"
+            icon="user"
             iconPosition="left"
             placeholder="Username"
             name="username"
@@ -27,7 +27,7 @@ const CustomLogin = ({
             fluid
             icon="lock"
             iconPosition="left"
-            placeholder="Senha"
+            placeholder="Password"
             type="password"
             name="password"
             value={password}
@@ -53,21 +53,16 @@ const CustomLogin = ({
           <Button.Content visible>Ainda não tenho conta</Button.Content>
           <Button.Content hidden>Cadastrar</Button.Content>
         </Button>
-        <Button
-          inverted
-          color="red"
-          onClick={() => goForgot()}
-          animated="fade"
-        >
+        <Button inverted color="red" onClick={() => goForgot()} animated="fade">
           <Button.Content visible>Esqueceu a senha ?</Button.Content>
-          <Button.Content hidden>Lembrar</Button.Content>
+          <Button.Content hidden>Recuperar</Button.Content>
         </Button>
       </Form>
     </div>
   );
 };
 
-CustomLogin.propTypes = {
+CustomSignIn.propTypes = {
   formData: PropTypes.shape({
     username: PropTypes.string,
     password: PropTypes.string,
@@ -78,4 +73,4 @@ CustomLogin.propTypes = {
   goRegister: PropTypes.func.isRequired,
 };
 
-export default CustomLogin;
+export default CustomSignIn;
