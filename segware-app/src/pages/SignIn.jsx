@@ -5,6 +5,7 @@ import CustomSignIn from '../components/CustomSignIn';
 import CustomHeader from '../components/CustomHeader';
 import CustomSubHeader from '../components/CustomSubHeader';
 import fetchSignIn from '../service/signInService';
+import { saveUsername } from '../helpers/localStorage';
 
 function SignIn() {
   const history = useHistory();
@@ -28,8 +29,9 @@ function SignIn() {
   const handleSubmit = async () => {
     const username = formData.get('username');
     const password = formData.get('password');
+    saveUsername(username)
     await fetchSignIn(username, password);
-    history.push('/');
+    history.push('/feed');
   };
 
   return (

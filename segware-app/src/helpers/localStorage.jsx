@@ -3,4 +3,9 @@ const saveToken = (token) =>
 
 const getToken = () => JSON.parse(localStorage.getItem('token'));
 
-export { getToken, saveToken };
+const saveUsername = (username) =>
+  localStorage.setItem('username', JSON.stringify(username));
+
+const getUsername = () => JSON.parse(localStorage.getItem('username'));
+
+export { getToken, saveToken, saveUsername, getUsername };
