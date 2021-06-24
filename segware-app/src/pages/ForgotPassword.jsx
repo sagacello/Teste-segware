@@ -12,6 +12,7 @@ import CentralContext from '../context/Context';
 function ForgotPassword() {
   const history = useHistory();
   const [formData, setFormData] = useState(new Map());
+  const [inputEnable, setInputEnable] = useState('');
 
   const validate = () => {
     const username = formData.get('username');  
@@ -28,7 +29,8 @@ function ForgotPassword() {
     const username = formData.get('username');
     const password = await fetchForgotPassword(username);
     console.log(password)
-    history.push('/sign-in');
+    setInputEnable(password)
+    return password;
   };
 
   const handleInputChange = useCallback(({ target: { name, value } }) => {
@@ -43,13 +45,14 @@ function ForgotPassword() {
     >
       <Grid.Column style={ { maxWidth: 450 } }>
         <CustomHeader message="SEGWARE" />
-        <CustomSubHeader message="RECUPEAR USERNAME" />
+        <CustomSubHeader message="RECUPEAR SENHA" />
 
         <CustomForgotPassword
           formData={ formData }
           onInputChange={ handleInputChange }
           onHandleSubmit={ handleSubmit }
           isValid={ validate }
+          showPassword = { inputEnable }
         />
         <CustomMessage>
           Já possui conta ?

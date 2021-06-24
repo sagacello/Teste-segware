@@ -10,6 +10,7 @@ const CustomForgotPassword = ({
   onInputChange,
   onHandleSubmit,
   isValid,
+  showPassword,
 }) => {
   const { isUsernameExist } = useContext(CentralContext);
   useEffect(() => {}, [isUsernameExist]);
@@ -25,12 +26,19 @@ const CustomForgotPassword = ({
           name="username"
           onChange={(e) => onInputChange(e)}
         />
+        <Form.Input
+          fluid
+          icon="lock"
+          iconPosition="left"
+          value={!showPassword ? ' ' : showPassword}
+          loading={!showPassword ? true : false}
+        />
         <Button
+          disabled={isValid()}
           color="red"
           fluid
           size="large"
           onClick={() => onHandleSubmit()}
-          disabled={isValid()}
         >
           Enviar
         </Button>
