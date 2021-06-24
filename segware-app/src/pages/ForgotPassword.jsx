@@ -4,6 +4,8 @@ import { Grid } from 'semantic-ui-react';
 import CustomMessage from '../components/CustomMessage';
 import CustomHeader from '../components/CustomHeader';
 import CustomForgotPassword from '../components/CustomForgotPassword';
+import CustomSubHeader from '../components/CustomSubHeader';
+import fetchForgotPassword from '../service/forgotPasswordService';
 
 import CentralContext from '../context/Context';
 
@@ -12,11 +14,10 @@ function ForgotPassword() {
   const [formData, setFormData] = useState(new Map());
 
   const validate = () => {
-    const usernameLimit = 12;
     const username = formData.get('username');  
     if (username) {
       const regexName = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
-      if (!regexName.test(username) || username.length < usernameLimit) {
+      if (!regexName.test(username)) {
         return true;
       }
     }
@@ -25,7 +26,9 @@ function ForgotPassword() {
 
   const handleSubmit = async () => {
     const username = formData.get('username');
-    // history.push('/admin/orders');
+    const password = await fetchForgotPassword(username);
+    console.log(password)
+    history.push('/sign-in');
   };
 
   const handleInputChange = useCallback(({ target: { name, value } }) => {
@@ -40,6 +43,8 @@ function ForgotPassword() {
     >
       <Grid.Column style={ { maxWidth: 450 } }>
         <CustomHeader message="SEGWARE" />
+        <CustomSubHeader message="RECUPEAR USERNAME" />
+
         <CustomForgotPassword
           formData={ formData }
           onInputChange={ handleInputChange }
@@ -49,7 +54,7 @@ function ForgotPassword() {
         <CustomMessage>
           Já possui conta ?
           {' '}
-          <Link to="/login">logar</Link>
+          <Link to="/sign-in">logar</Link>
         </CustomMessage>
       </Grid.Column>
     </Grid>

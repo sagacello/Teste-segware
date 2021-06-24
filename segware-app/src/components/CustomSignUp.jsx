@@ -5,7 +5,7 @@ import CentralContext from '../context/Context';
 
 import 'semantic-ui-css/semantic.min.css';
 
-const CustomSignUpForm = ({
+const CustomSignUp = ({
   formData: { username, password },
   onInputChange,
   onHandleSubmit,
@@ -54,7 +54,7 @@ const CustomSignUpForm = ({
   );
 };
 
-CustomSignUpForm.propTypes = {
+CustomSignUp.propTypes = {
   formData: PropTypes.shape({
     username: PropTypes.string,
     password: PropTypes.string,
@@ -65,4 +65,4 @@ CustomSignUpForm.propTypes = {
 
 };
 
-export default CustomSignUpForm;
+export default CustomSignUp;
