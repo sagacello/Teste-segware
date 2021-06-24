@@ -15,7 +15,7 @@ function ForgotPassword() {
   const [inputEnable, setInputEnable] = useState('');
 
   const validate = () => {
-    const username = formData.get('username');  
+    const username = formData.get('username');
     if (username) {
       const regexName = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
       if (!regexName.test(username)) {
@@ -28,8 +28,8 @@ function ForgotPassword() {
   const handleSubmit = async () => {
     const username = formData.get('username');
     const password = await fetchForgotPassword(username);
-    console.log(password)
-    setInputEnable(password)
+    console.log(password);
+    setInputEnable(password);
     return password;
   };
 
@@ -40,28 +40,26 @@ function ForgotPassword() {
   return (
     <Grid
       textAlign="center"
-      style={ { height: '105vh', backgroundColor: 'rgb(33, 33, 33)' } }
+      style={{ height: '105vh', backgroundColor: 'rgb(33, 33, 33)' }}
       verticalAlign="middle"
     >
-      <Grid.Column style={ { maxWidth: 450 } }>
+      <Grid.Column style={{ maxWidth: 450 }}>
         <CustomHeader message="SEGWARE" />
         <CustomSubHeader message="RECUPEAR SENHA" />
 
         <CustomForgotPassword
-          formData={ formData }
-          onInputChange={ handleInputChange }
-          onHandleSubmit={ handleSubmit }
-          isValid={ validate }
-          showPassword = { inputEnable }
+          formData={formData}
+          onInputChange={handleInputChange}
+          onHandleSubmit={handleSubmit}
+          isValid={validate}
+          showPassword={inputEnable}
         />
         <CustomMessage>
-          Já possui conta ?
-          {' '}
-          <Link to="/sign-in">logar</Link>
+          Já possui conta ? <Link to="/sign-in">logar</Link>
         </CustomMessage>
       </Grid.Column>
     </Grid>
   );
 }
 
-export default (ForgotPassword);
+export default ForgotPassword;

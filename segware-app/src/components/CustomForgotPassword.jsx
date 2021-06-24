@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Segment } from 'semantic-ui-react';
 import CentralContext from '../context/Context';
-
 import 'semantic-ui-css/semantic.min.css';
 
 const CustomForgotPassword = ({
