@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Form, TextArea, Icon, Button } from 'semantic-ui-react';
+import { Header, Form, TextArea, Icon, Button, Popup } from 'semantic-ui-react';
 import CustomSubHeader from '../components/CustomSubHeader';
 
-const CustomFeed = ({ text, onInputChange, onHandleSubmit, showUsername }) => {
+const CustomFeed = ({
+  formData: { content },
+  onInputChange,
+  onHandleSubmit,
+  showUsername,
+  goAllContent,
+}) => {
   return (
     <div>
       <Form>
@@ -19,27 +25,49 @@ const CustomFeed = ({ text, onInputChange, onHandleSubmit, showUsername }) => {
           placeholder="Escreva aqui"
           style={({ minHeight: 80 }, { marginTop: '6vh' })}
           name="text"
-          value={text}
+          value={content}
           onChange={(e) => onInputChange(e)}
         />
-        <Button
-          style={{ marginTop: '1vh' }}
-          type="submit"
-          color="red"
-          fluid
-          size="tiny"
-          onClick={() => onHandleSubmit()}
-        >
-          Enviar
-        </Button>
+        <Popup
+          content={
+            <>
+              <code>Texto enviado com sucesso</code>.
+            </>
+          }
+          on="click"
+          popper={{ id: 'popper-container', style: { zIndex: 2000 } }}
+          trigger={
+            <Button
+              style={{ marginTop: '1vh' }}
+              type="submit"
+              color="red"
+              fluid
+              size="tiny"
+              onClick={() => onHandleSubmit()}
+            >
+              Enviar
+            </Button>
+          }
+        />
       </Form>
+      <Button
+        style={{ marginTop: '2vh' }}
+        inverted
+        color="red"
+        onClick={() => goAllContent()}
+        animated="fade"
+      >
+        <Button.Content visible>Ver todos os seus textos</Button.Content>
+        <Button.Content hidden>visualizar</Button.Content>
+      </Button>
     </div>
   );
 };
 
 CustomFeed.propTypes = {
-  showUsername: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  formData: PropTypes.shape({
+    content: PropTypes.string,
+  }).isRequired,
   onInputChange: PropTypes.func.isRequired,
   onHandleSubmit: PropTypes.func.isRequired,
 };
