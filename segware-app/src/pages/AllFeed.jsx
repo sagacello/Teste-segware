@@ -9,7 +9,7 @@ function AllFeed() {
   const history = useHistory();
 
   const [allContent, setAllContent] = useState();
-  
+
   useEffect(() => {
     const allFeed = async () => {
       const all = await fetchAllFeed();
@@ -19,26 +19,20 @@ function AllFeed() {
     allFeed();
   }, [setAllContent]);
 
+  // const backLogin = () => history.push('/');
 
-  const backLogin = () => history.push('/');
-
-  
   const renderContent = () => (
-      <Grid textAlign="center" style={{ padding: '10vh' }}>
-        {!allContent
-          ? null
-          : allContent.slice(0, 12).map((item, index) => (
-              <Grid.Column width={5}>
-                <CustomAllFeed
-                  key={index}
-                  index={index}
-                  item={item}
-                />
-              </Grid.Column>
-            ))}
-      </Grid>
-    )   
-  
+    <Grid textAlign="center" style={{ padding: '10vh' }}>
+      {!allContent
+        ? null
+        : allContent.slice(0, 12).map((item, index) => (
+            <Grid.Column key={index} width={5}>
+              <CustomAllFeed index={index} item={item} />
+            </Grid.Column>
+          ))}
+    </Grid>
+  );
+
   return (
     <Grid style={{ backgroundColor: 'rgb(33, 33, 33)' }}>
       <CustomHeader message="TODOS OS POSTS" />

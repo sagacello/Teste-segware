@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 import CustomFeed from '../components/CustomFeed';
@@ -9,7 +9,7 @@ function Feed() {
   const history = useHistory();
   const [formData, setFormData] = useState(new Map());
   
-  const allContent = () => history.push('/allFeed');
+  const allContent = () => history.push('/feeds');
 
   const handleInputChange = useCallback(({ target: { name, value } }) => {
     setFormData((prevState) => new Map(prevState).set(name, value));
@@ -17,7 +17,6 @@ function Feed() {
 
   const handleSubmit = async () => {
     const content = formData.get('text');
-    console.log(content)
     await feedService(content)
     // history.push('/');
   };
