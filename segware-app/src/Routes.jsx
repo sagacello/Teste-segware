@@ -15,7 +15,7 @@ const Routes = () => (
     <Route exact path="/" component={ SignIn } />
     <Route exact path="/forgot-password" component={ ForgotPassword } />
     <PrivateRouter exact path="/feed" component={ Feed } />
-    <PrivateRouter exact path="/allFeed" component={ AllFeed } />
+    <PrivateRouter exact path="/feeds" component={ AllFeed } />
   </Switch>
 );
 

@@ -13,7 +13,7 @@ const CustomFeed = ({
   return (
     <div>
       <Form>
-        <Header style={{ marginTop: '4vh' }} color="red" as="h2">
+        <Header style={{ marginTop: '20vh' }} color="red" as="h2">
           SEU POST
         </Header>
         <Icon size="big" name="user" color="red" style={{ marginTop: '3vh' }} />
