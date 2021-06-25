@@ -42,7 +42,7 @@ function SignUp() {
       verticalAlign="middle"
     >
       <Grid.Column style={{ maxWidth: 450 }}>
-        <CustomHeader message="SEGWARE" />
+        <CustomHeader  message="SEGWARE" />
         <CustomSubHeader message="CADASTRO" />
 
         <CustomSignUp
