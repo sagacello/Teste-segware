@@ -14,7 +14,7 @@ const CustomFeed = ({
     <div>
       <Form>
         <Header style={{ marginTop: '4vh' }} color="red" as="h2">
-          SEU TEXTO
+          SEU POST
         </Header>
         <Icon size="big" name="user" color="red" style={{ marginTop: '3vh' }} />
         <CustomSubHeader message={!showUsername ? 'username' : showUsername}>
@@ -31,7 +31,7 @@ const CustomFeed = ({
         <Popup
           content={
             <>
-              <code>Texto enviado com sucesso</code>.
+              <code>Post enviado com sucesso</code>.
             </>
           }
           on="click"
@@ -57,7 +57,7 @@ const CustomFeed = ({
         onClick={() => goAllContent()}
         animated="fade"
       >
-        <Button.Content visible>Ver todos os seus textos</Button.Content>
+        <Button.Content visible>Ver todos os seus posts</Button.Content>
         <Button.Content hidden>visualizar</Button.Content>
       </Button>
     </div>
@@ -70,6 +70,8 @@ CustomFeed.propTypes = {
   }).isRequired,
   onInputChange: PropTypes.func.isRequired,
   onHandleSubmit: PropTypes.func.isRequired,
+  showUsername: PropTypes.bool.isRequired,
+  goAllContent: PropTypes.func.isRequired,
 };
 
 export default CustomFeed;
