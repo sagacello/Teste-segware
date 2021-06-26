@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 import CustomMessage from '../components/CustomMessage';
 import CustomHeader from '../components/CustomHeader';
@@ -7,10 +7,7 @@ import CustomForgotPassword from '../components/CustomForgotPassword';
 import CustomSubHeader from '../components/CustomSubHeader';
 import fetchForgotPassword from '../service/forgotPasswordService';
 
-import CentralContext from '../context/Context';
-
 function ForgotPassword() {
-  const history = useHistory();
   const [formData, setFormData] = useState(new Map());
   const [inputEnable, setInputEnable] = useState('');
 

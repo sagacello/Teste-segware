@@ -1,7 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Segment } from 'semantic-ui-react';
-import CentralContext from '../context/Context';
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -11,8 +10,7 @@ const CustomSignUp = ({
   onHandleSubmit,
   isValid,
 }) => {
-  const { isUsernameExist } = useContext(CentralContext);
-  useEffect(() => {}, [isUsernameExist]);
+ 
   return (
     <Form size="large">
       <Segment stacked style={ { backgroundColor: 'rgb(33, 33, 33)' } }>
@@ -45,10 +43,6 @@ const CustomSignUp = ({
         >
           Cadastrar
         </Button>
-
-        {!isUsernameExist ? null : (
-          <span>Já existe um usuário com esse e-mail.</span>
-        )}
       </Segment>
     </Form>
   );

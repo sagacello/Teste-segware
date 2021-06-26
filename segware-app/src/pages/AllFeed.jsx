@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
 import CustomAllFeed from '../components/CustomAllFeed';
 import fetchAllFeed from '../service/allFeedService';
 import CustomHeader from '../components/CustomHeader';
 
 function AllFeed() {
-  const history = useHistory();
-
   const [allContent, setAllContent] = useState();
-
   useEffect(() => {
     const allFeed = async () => {
       const all = await fetchAllFeed();
@@ -25,7 +21,7 @@ function AllFeed() {
     <Grid textAlign="center" style={{ padding: '10vh' }}>
       {!allContent
         ? null
-        : allContent.slice(0, 12).map((item, index) => (
+        : allContent.slice(0, 20).map((item, index) => (
             <Grid.Column key={index} width={5}>
               <CustomAllFeed index={index} item={item} />
             </Grid.Column>
