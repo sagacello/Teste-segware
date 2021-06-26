@@ -14,12 +14,17 @@ function SignIn() {
   const register = () => history.push('/sign-up');
   const forgotPassword = () => history.push('/forgot-password');
   const validate = () => {
+    const passLimit = 0;
     const username = formData.get('username');
+    const password = formData.get('password');
     if (username) {
       const regexName = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
       if (!regexName.test(username)) {
         return true;
       }
+    }
+    if (!password || password.length <= passLimit) {
+      return true;
     }
     return false;
   };

@@ -5,21 +5,21 @@ import CustomSubHeader from './CustomSubHeader';
 import fetchReactions from '../service/ReactionsService';
 
 const CustomAllFeed = ({ index, item }) => {
-  const [markedLike, setMarkedLike] = useState(false);
+  const [markedStar, setMarkedmarkedStar] = useState(false);
   const [markedHeart, setMarkedHeart] = useState(false);
-
-  const handleSubmitLike = () => {
-    setMarkedLike(!markedLike);
+  console.log(item);
+  const handleSubmitStar = () => {
+    setMarkedmarkedStar(!markedStar);
     // cada veze que eu clico eu nego o estado e atualizo
   };
   const handleSubmitHeart = () => {
     setMarkedHeart(!markedHeart);
   };
 
-  const markekedReaction = async (index) => {
-    console.log(index, markedLike, markedHeart)
-    await fetchReactions(index, markedLike, markedHeart);
-    console.log(await fetchReactions())
+  const markekedReaction = async (id) => {
+    console.log(id, markedStar, markedHeart);
+    await fetchReactions(id, markedStar, markedHeart);
+    console.log(await fetchReactions());
   };
 
   return (
@@ -40,17 +40,17 @@ const CustomAllFeed = ({ index, item }) => {
                 name="like"
                 onClick={async () => {
                   handleSubmitHeart();
-                  await markekedReaction(index);
+                  await markekedReaction(item.id);
                 }}
               />
               <Icon
-                rotated={markedLike ? 'clockwise' : 'counterclockwise'}
-                color={markedLike ? 'yellow' : 'grey'}
+                rotated={markedStar ? 'clockwise' : 'counterclockwise'}
+                color={markedStar ? 'yellow' : 'grey'}
                 size="big"
                 name="favorite"
                 onClick={async () => {
-                  handleSubmitLike();
-                  await markekedReaction(index);
+                  handleSubmitStar();
+                  await markekedReaction(item.id);
                 }}
               />
             </Item.Extra>

@@ -34,6 +34,7 @@ const CustomSignIn = ({
             onChange={(e) => onInputChange(e)}
           />
           <Button
+            name="submitButtom"
             type="submit"
             color="red"
             fluid
