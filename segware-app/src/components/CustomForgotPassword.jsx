@@ -28,6 +28,7 @@ const CustomForgotPassword = ({
           iconPosition="left"
           value={!showPassword ? ' ' : showPassword}
           loading={!showPassword ? true : false}
+          placeholder="Password"
         />
         <Button
           disabled={isValid()}
@@ -46,6 +47,7 @@ const CustomForgotPassword = ({
 CustomForgotPassword.propTypes = {
   formData: PropTypes.shape({
     username: PropTypes.string,
+    showPassword: PropTypes.bool,
   }).isRequired,
   onInputChange: PropTypes.func.isRequired,
   isValid: PropTypes.func.isRequired,

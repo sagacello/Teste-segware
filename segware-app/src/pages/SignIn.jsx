@@ -42,7 +42,7 @@ function SignIn() {
   return (
     <Grid
       textAlign="center"
-      style={{ height: '105vh', backgroundColor: 'rgb(33, 33, 33)' }}
+      style={{ height: '115vh', backgroundColor: 'rgb(33, 33, 33)', marginTop: '-15vh' }}
       verticalAlign="middle"
     >
       <Grid.Column style={{ maxWidth: 500 }}>
