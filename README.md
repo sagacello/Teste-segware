@@ -1,4 +1,6 @@
 
+![grab-landing-page](https://gifs.com/gif/segware-k2ZlME)
+
    # Introdução!
 
 Desafio:
@@ -11,12 +13,19 @@ Desafio:
     * Incluir testes unitários e de integração
    
 
-## Tecnologias para serem utilizadas no desenvolvimento 
-  * React
-  
+## Principais tecnologias utilizadas no desenvolvimento 
+  * React 
+  * Context.api 
+  * Semantic Ui
+  * Jest
+ 
+  ## Para rodar a aplicação localmente
+   - Após instalar as dependências  
+   - Na pasta raiz digite: npm start
 
-  
-
+  ## Para rodar os testes 
+   - Após instalar as dependências  
+   - Na pasta raiz digite: npm test
 
 
 
