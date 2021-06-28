@@ -7,7 +7,7 @@ import fetchSignUp from '../service/signUpService';
 
 
 describe('Teste se a página SignUp', () => {
-  it.only('Obtem retorno do endpoint "https://segware-book-api.segware.io/api/sign-up"', async () => {
+  it('Obtem retorno do endpoint "https://segware-book-api.segware.io/api/sign-up"', async () => {
     const username = 'adm';
     const password = '123';
     expect(await fetchSignUp(username, password)).toEqual("Request failed with status code 500");

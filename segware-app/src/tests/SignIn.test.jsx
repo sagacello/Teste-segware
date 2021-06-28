@@ -3,10 +3,15 @@ import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import SignIn from '../pages/SignIn';
 import renderWithRouter from './config/renderWithRouter';
-// const jwt = require('jsonwebtoken');
-
+import fetchSignIn from '../service/signInService';
 
 describe('Teste se a página SignIn', () => {
+  it('Obtem um retorno do endpoint "https://segware-book-api.segware.io/api/sign-in"', async () => {
+    const username = 'adm';
+    const password = '123';
+    const res = await fetchSignIn(username, password);
+    expect(res.length).toBeGreaterThan(10);
+  });
 
   it('renderiza o componente Header e o SubHeader', () => {
     renderWithRouter(<SignIn />);
@@ -39,7 +44,7 @@ describe('Teste se a página SignIn', () => {
     expect(usernameInput.value).toBe(USERNAME);
     expect(passwordInput.value).toBe(PASSWORD);
   });
-  
+
   it('se redireciona a pessoa para a página de cadastro ao clikar no botão cadastrar', () => {
     const { history } = renderWithRouter(<SignIn />);
     const btnCadastro = screen.getByRole('button', {
@@ -60,7 +65,6 @@ describe('Teste se a página SignIn', () => {
     expect(history.location.pathname).toBe('/forgot-password');
   });
 
-  
   it('se redireciona a pessoa para a página de feed ao clikar no botão entrar', async () => {
     const { history } = renderWithRouter(<SignIn />);
     const usernameInput = screen.getByPlaceholderText('Username');
@@ -76,19 +80,20 @@ describe('Teste se a página SignIn', () => {
     expect(history.location.pathname).toBe('/feed');
   });
 
-  it('se o token é gerado e salvo no localStorage ao clicar no botão entrar', async () => {
+  it('se o token é gerado de acordo com o retorno do backEnd e salvo no localStorage ao clicar no botão Entrar', async () => {
     const { history } = renderWithRouter(<SignIn />);
     localStorage.clear();
-    const PASSWORD = '123';
-    const USERNAME = 'adm';
+    const password = '123';
+    const username = 'adm';
     const usernameInput = screen.getByPlaceholderText('Username');
     const passwordInput = screen.getByPlaceholderText('Password');
     const btnEntrar = screen.getByRole('button', { name: /Entrar/i });
-    fireEvent.change(usernameInput, { target: { value: USERNAME } });
-    fireEvent.change(passwordInput, { target: { value: PASSWORD } });
+    fireEvent.change(usernameInput, { target: { value: username } });
+    fireEvent.change(passwordInput, { target: { value: password } });
     fireEvent.click(btnEntrar);
     await waitFor(() => expect(history.location.pathname).toBe('/feed'));
+    const res = await fetchSignIn(username, password);
     const token = JSON.parse(localStorage.getItem('token'));
-    expect(token.length).toBeGreaterThan(10)
+    expect(token).toEqual(res);
   });
 });
