@@ -1,5 +1,5 @@
 
-![grab-landing-page](https://gifs.com/gif/segware-k2ZlME)
+![grab-landing-page](https://j.gifs.com/k2ZlME.gif)
 
    # Introdução!
 
