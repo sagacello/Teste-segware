@@ -32,7 +32,7 @@ function AllFeed() {
   return (
     <Grid style={{ backgroundColor: 'rgb(33, 33, 33)' }}>
       <CustomHeader message="TODOS OS POSTS" />
-      {renderContent()}
+      {!allContent ? null : renderContent()}
     </Grid>
   );
 }

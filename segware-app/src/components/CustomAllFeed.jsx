@@ -17,9 +17,7 @@ const CustomAllFeed = ({ index, item }) => {
   };
 
   const markekedReaction = async (id) => {
-    console.log(id, markedStar, markedHeart);
     await fetchReactions(id, markedStar, markedHeart);
-    console.log(await fetchReactions());
   };
 
   return (
@@ -42,12 +40,14 @@ const CustomAllFeed = ({ index, item }) => {
                   handleSubmitHeart();
                   await markekedReaction(item.id);
                 }}
+                data-testid="like"
               />
               <Icon
                 rotated={markedStar ? 'clockwise' : 'counterclockwise'}
                 color={markedStar ? 'yellow' : 'grey'}
                 size="big"
                 name="favorite"
+                // data-testid="favorite"
                 onClick={async () => {
                   handleSubmitStar();
                   await markekedReaction(item.id);
