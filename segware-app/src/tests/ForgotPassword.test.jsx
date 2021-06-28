@@ -26,6 +26,12 @@ describe('Teste se a página ForgotPassword', () => {
     expect(linkLogar).toBeInTheDocument();
   });
 
+  it('Será validado que o botão "Enviar" fica desabilitado caso não adicione username', () => {
+    renderWithRouter(<ForgotPassword />);
+    const btnEntrar = screen.getByRole('button', { name: /Enviar/i });
+    expect(btnEntrar).toBeDisabled();
+  });
+  
   it('se é possível escrever no input', () => {
     renderWithRouter(<ForgotPassword />);
     const usernameInput = screen.getByPlaceholderText('Username');

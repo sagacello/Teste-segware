@@ -13,12 +13,10 @@ function ForgotPassword() {
 
   const validate = () => {
     const username = formData.get('username');
-    if (username) {
-      const regexName = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
-      if (!regexName.test(username)) {
+    if (!username) {
         return true;
       }
-    }
+    
     return false;
   };
 

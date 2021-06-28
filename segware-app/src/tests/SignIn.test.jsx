@@ -19,6 +19,12 @@ describe('Teste se a página SignIn', () => {
     expect(screen.getByText('LOGIN')).toBeInTheDocument();
   });
 
+  it('Será validado que o botão "Entrar" fica desabilitado caso não adicione username e password', () => {
+    renderWithRouter(<SignIn />);
+    const btnEntrar = screen.getByRole('button', { name: /Entrar/i });
+    expect(btnEntrar).toBeDisabled();
+  });
+
   it('renderiza os botões cadastrar, recuperar senha e entrar', () => {
     renderWithRouter(<SignIn />);
     const btnEntrar = screen.getByRole('button', { name: /Entrar/i });
