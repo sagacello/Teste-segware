@@ -5,10 +5,9 @@ import Feed from '../pages/Feed';
 import renderWithRouter from './config/renderWithRouter';
 
 describe('Teste se a página Feed', () => {
-  it('renderiza o componente Header e o SubHeader', () => {
+  it('renderiza o componente Header', async () => {
     renderWithRouter(<Feed />);
     expect(screen.getByText('SEU POST')).toBeInTheDocument();
-    // expect(screen.getByText('RECUPEAR SENHA')).toBeInTheDocument();
   });
 
   it('renderiza os botões enviar e "ver todos os posts"', () => {
@@ -26,7 +25,6 @@ describe('Teste se a página Feed', () => {
     fireEvent.change(textInput, { target: { value: TEXT } });
     expect(textInput.value).toBe(TEXT);
   });
-
 
   it('se redireciona a pessoa para a página de Posts ao clikar no botão "ver todos os posts"', async () => {
     const { history } = renderWithRouter(<Feed />);

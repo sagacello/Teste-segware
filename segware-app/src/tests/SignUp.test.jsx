@@ -40,6 +40,12 @@ describe('Teste se a página SignUp', () => {
     expect(passwordInput.value).toBe(PASSWORD);
   });
 
+  it('Será validado que o botão "Cadastrar" fica desabilitado caso não adicione username e password', () => {
+    renderWithRouter(<SignUp />);
+    const btnEntrar = screen.getByRole('button', { name: /Cadastrar/i });
+    expect(btnEntrar).toBeDisabled();
+  });
+
   it('se redireciona a pessoa para a página de Login ao clikar no botão cadastrar apos preenchimento do formulario', async () => {
     const { history } = renderWithRouter(<SignUp />);
     const btnCadastrar = screen.getByRole('button', { name: /Cadastrar/i });
