@@ -3,8 +3,17 @@ import { screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import SignUp from '../pages/SignUp';
 import renderWithRouter from './config/renderWithRouter';
+import fetchSignUp from '../service/signUpService';
+
 
 describe('Teste se a página SignUp', () => {
+  it.only('Obtem retorno do endpoint "https://segware-book-api.segware.io/api/sign-up"', async () => {
+    const username = 'adm';
+    const password = '123';
+    expect(await fetchSignUp(username, password)).toEqual("Request failed with status code 500");
+    console.log("Resposta do servidor STATUS 500, devido ao usuario ja ter sido cadastrado",)
+  });
+
   it('renderiza o componente Header e o SubHeader', () => {
     renderWithRouter(<SignUp />);
     expect(screen.getByText('SEGWARE')).toBeInTheDocument();
