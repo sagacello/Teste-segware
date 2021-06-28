@@ -25,7 +25,6 @@ function ForgotPassword() {
   const handleSubmit = async () => {
     const username = formData.get('username');
     const password = await fetchForgotPassword(username);
-    console.log(password);
     setInputEnable(password);
     return password;
   };

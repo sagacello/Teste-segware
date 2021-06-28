@@ -29,6 +29,7 @@ const CustomForgotPassword = ({
           value={!showPassword ? ' ' : showPassword}
           loading={!showPassword ? true : false}
           placeholder="Password"
+          data-testid="password-input"
         />
         <Button
           disabled={isValid()}
