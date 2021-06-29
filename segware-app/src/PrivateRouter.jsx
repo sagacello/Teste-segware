@@ -6,12 +6,16 @@ const isAuthenticated = () => localStorage.getItem('token');
 
 const PrivateRouter = ({ component: Component, ...rest }) => (
   <Route
-    { ...rest }
-    render={ (props) => (isAuthenticated() ? (
-      <Component { ...props } />
-    ) : (
-      <Redirect to={ { pathname: '/sign-in', state: { from: props.location } } } />
-    )) }
+    {...rest}
+    render={(props) =>
+      isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{ pathname: '/sign-in', state: { from: props.location } }}
+        />
+      )
+    }
   />
 );
 

@@ -40,11 +40,15 @@ function SignUp() {
   return (
     <Grid
       textAlign="center"
-      style={{ height: '115vh', backgroundColor: 'rgb(33, 33, 33)' , marginTop: '-15vh' }}
+      style={{
+        height: '115vh',
+        backgroundColor: 'rgb(33, 33, 33)',
+        marginTop: '-15vh',
+      }}
       verticalAlign="middle"
     >
       <Grid.Column style={{ maxWidth: 450 }}>
-        <CustomHeader  message="SEGWARE" />
+        <CustomHeader message="SEGWARE" />
         <CustomSubHeader message="CADASTRO" />
 
         <CustomSignUp
@@ -54,7 +58,10 @@ function SignUp() {
           isValid={validate}
         />
         <CustomMessage>
-          Já possui conta ? <Link data-testid="btn-link" to="/sign-in">logar</Link>
+          Já possui conta ?{' '}
+          <Link data-testid="btn-link" to="/sign-in">
+            logar
+          </Link>
         </CustomMessage>
       </Grid.Column>
     </Grid>

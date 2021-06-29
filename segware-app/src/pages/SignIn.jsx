@@ -34,7 +34,7 @@ function SignIn() {
   const handleSubmit = async () => {
     const username = formData.get('username');
     const password = formData.get('password');
-    saveUsername(username)
+    saveUsername(username);
     await fetchSignIn(username, password);
     history.push('/feed');
   };
@@ -42,7 +42,11 @@ function SignIn() {
   return (
     <Grid
       textAlign="center"
-      style={{ height: '115vh', backgroundColor: 'rgb(33, 33, 33)', marginTop: '-15vh' }}
+      style={{
+        height: '115vh',
+        backgroundColor: 'rgb(33, 33, 33)',
+        marginTop: '-15vh',
+      }}
       verticalAlign="middle"
     >
       <Grid.Column style={{ maxWidth: 500 }}>

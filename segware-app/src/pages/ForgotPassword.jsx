@@ -14,9 +14,9 @@ function ForgotPassword() {
   const validate = () => {
     const username = formData.get('username');
     if (!username) {
-        return true;
-      }
-    
+      return true;
+    }
+
     return false;
   };
 
@@ -34,7 +34,11 @@ function ForgotPassword() {
   return (
     <Grid
       textAlign="center"
-      style={{ height: '115vh', backgroundColor: 'rgb(33, 33, 33)', marginTop: '-15vh'}}
+      style={{
+        height: '115vh',
+        backgroundColor: 'rgb(33, 33, 33)',
+        marginTop: '-15vh',
+      }}
       verticalAlign="middle"
     >
       <Grid.Column style={{ maxWidth: 450 }}>
