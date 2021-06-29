@@ -7,15 +7,14 @@ import AllFeed from './pages/AllFeed';
 import ForgotPassword from './pages/ForgotPassword';
 import PrivateRouter from './PrivateRouter';
 
-
 const Routes = () => (
   <Switch>
-    <Route exact path="/sign-up" component={ SignUp } />
-    <Route exact path="/sign-in" component={ SignIn } />
-    <Route exact path="/" component={ SignIn } />
-    <Route exact path="/forgot-password" component={ ForgotPassword } />
-    <PrivateRouter exact path="/feed" component={ Feed } />
-    <PrivateRouter exact path="/feeds" component={ AllFeed } />
+    <Route exact path="/sign-up" component={SignUp} />
+    <Route exact path="/sign-in" component={SignIn} />
+    <Route exact path="/" component={SignIn} />
+    <Route exact path="/forgot-password" component={ForgotPassword} />
+    <PrivateRouter exact path="/feed" component={Feed} />
+    <PrivateRouter exact path="/feeds" component={AllFeed} />
   </Switch>
 );
 

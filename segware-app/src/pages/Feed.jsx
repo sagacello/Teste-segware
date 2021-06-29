@@ -8,7 +8,7 @@ import { getUsername } from '../helpers/localStorage';
 function Feed() {
   const history = useHistory();
   const [formData, setFormData] = useState(new Map());
-  
+
   const allContent = () => history.push('/feeds');
 
   const handleInputChange = useCallback(({ target: { name, value } }) => {
@@ -17,7 +17,7 @@ function Feed() {
 
   const handleSubmit = async () => {
     const content = formData.get('text');
-    await feedService(content)
+    await feedService(content);
     // history.push('/');
   };
 
@@ -34,7 +34,6 @@ function Feed() {
           onInputChange={handleInputChange}
           showUsername={getUsername()}
           goAllContent={allContent}
-          
         />
       </Grid.Column>
     </Grid>
