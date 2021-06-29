@@ -22,7 +22,6 @@ export default async function fetchFeed(content) {
       return data;
     }
   } catch (error) {
-    console.error(error);
     return error.message;
   }
 }

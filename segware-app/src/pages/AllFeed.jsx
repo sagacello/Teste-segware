@@ -9,6 +9,7 @@ function AllFeed() {
   useEffect(() => {
     const allFeed = async () => {
       const all = await fetchAllFeed();
+      
       setAllContent(all);
       return all;
     };
