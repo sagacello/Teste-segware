@@ -15,7 +15,6 @@ export default async function fetchSignUp(username, password) {
     const res = await axios.post(requestUserUrl, requestBody, requestHeader);
     const { data } = res;
     if (data) {
-      console.log(data)
       return data;
     }
   } catch (error) {

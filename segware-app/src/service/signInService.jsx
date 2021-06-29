@@ -14,7 +14,6 @@ export default async function fetchSignIn(username, password) {
   };
   try {
     const res = await axios.post(requestUserUrl, requestBody, requestHeader);
-    console.log('res', res);
     const { data } = res;
     if (data) {
       saveToken(data);

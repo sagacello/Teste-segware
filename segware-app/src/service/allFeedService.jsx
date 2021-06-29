@@ -19,7 +19,6 @@ export default async function fetchAllFeed() {
       return data;
     }
   } catch (error) {
-    console.error(error);
     return error.message;
   }
 }

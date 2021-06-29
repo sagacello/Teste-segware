@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Item, Icon, Segment, Container, Divider } from 'semantic-ui-react';
 import CustomSubHeader from './CustomSubHeader';
@@ -7,7 +7,7 @@ import fetchReactions from '../service/ReactionsService';
 const CustomAllFeed = ({ index, item }) => {
   const [markedStar, setMarkedmarkedStar] = useState(false);
   const [markedHeart, setMarkedHeart] = useState(false);
-  console.log(item);
+
   const handleSubmitStar = () => {
     setMarkedmarkedStar(!markedStar);
     // cada veze que eu clico eu nego o estado e atualizo
@@ -15,6 +15,28 @@ const CustomAllFeed = ({ index, item }) => {
   const handleSubmitHeart = () => {
     setMarkedHeart(!markedHeart);
   };
+
+  useEffect(() => {
+    Object.entries(item)
+      .slice(0, 15)
+      .map((i) => {
+        if (i[0] === 'likes' && i[1] === 0) {
+          console.log(i[0] ,'===', i[1]);
+          return setMarkedmarkedStar(false);
+        }
+        else if (i[0] === 'likes' && i[1] === 1) {
+          console.log(i[0] ,'===', i[1]);
+          return setMarkedmarkedStar(true);
+        }
+        else if (i[0] === 'loves' && i[1] === 0) {
+          console.log(i[0] ,'===', i[1]);
+          return setMarkedHeart(false);
+        }
+        else if (i[0] === 'loves' && i[1] === 1) {
+          return setMarkedHeart(true);
+        }
+      });
+  }, [setMarkedmarkedStar, setMarkedHeart, item]);
 
   const markekedReaction = async (id) => {
     await fetchReactions(id, markedStar, markedHeart);
@@ -63,8 +85,6 @@ const CustomAllFeed = ({ index, item }) => {
 
 CustomAllFeed.propTypes = {
   index: PropTypes.number.isRequired,
-  markedHeart: PropTypes.bool.isRequired,
-  markedLike: PropTypes.bool.isRequired,
 };
 
 export default CustomAllFeed;

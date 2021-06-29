@@ -19,7 +19,6 @@ export default async function fetchReactions(feedId, like, love) {
     const res = await axios.post(requestUserUrl, requestBody, {
       headers: requestHeader,
     });
-    console.log(res)
     return res.data;
   } catch (error) {
     return error.message;
